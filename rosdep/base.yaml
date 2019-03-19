@@ -1,2 +1,4 @@
 xacro:
   alpine: [ros-kinetic-xacro]
+xacro:
+  alpine: [ros-kinetic-catkin]
