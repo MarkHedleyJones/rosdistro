@@ -1,2 +1,2 @@
-dummy:
-  dummy: [to-be-removed]
+xacro:
+  alpine: [ros-kinetic-xacro]
