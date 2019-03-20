@@ -1,4 +1,2 @@
-xacro:
-  alpine: [ros-kinetic-xacro]
-catkin:
-  alpine: [ros-kinetic-catkin]
+dummy:
+  dummy: [irrelevant]
