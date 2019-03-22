@@ -1,2 +1,4 @@
 liburdfdom-tools:
   alpine: [urdfdom]
+xacro:
+  alpine: [ros-kinetic-xacro]
