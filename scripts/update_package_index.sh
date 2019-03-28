@@ -23,6 +23,6 @@ rm Dockerfile ros_entrypoint.sh
 
 # docker run -it -v "$(dirname "$DIR")"/kinetic:/rosdistro/kinetic rosdistro-image:latest /package_filter.py /rosdistro/"$DISTRO" "$DISTRO"
 
-docker run rosdistro-image:latest /package_filter.py / "$DISTRO" > ../"$DISTRO"/distribution.yaml
+docker run --rm rosdistro-image:latest /package_filter.py / "$DISTRO" > ../"$DISTRO"/distribution.yaml
 
 echo "Completed. Please check the contents of ../$DISTRO/distribution"
