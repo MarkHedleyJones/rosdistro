@@ -9,20 +9,19 @@ ALPINE_DOCKER_URL="https://raw.githubusercontent.com/at-wat/alpine-ros/master/$D
 # Grab the latest Docker image for alpine-ros
 DOCKERFILE="Dockerfile"
 ENTRYPOINT="ros_entrypoint.sh"
-wget -q "$ALPINE_DOCKER_URL$DOCKERFILE" -O Dockerfile
-wget -q "$ALPINE_DOCKER_URL$ENTRYPOINT" -O ros_entrypoint.sh
+wget "$ALPINE_DOCKER_URL$DOCKERFILE" -O Dockerfile
+wget "$ALPINE_DOCKER_URL$ENTRYPOINT" -O ros_entrypoint.sh
 
 
 echo "COPY package_filter.py /" >> ./Dockerfile
 echo "RUN apk update" >> ./Dockerfile
 chmod +x ./ros_entrypoint.sh
 
-docker build -t rosdistro-image "$DIR" >/dev/null
+docker build -t rosdistro-image "$DIR"
 
 rm Dockerfile ros_entrypoint.sh
 
-# docker run -it -v "$(dirname "$DIR")"/kinetic:/rosdistro/kinetic rosdistro-image:latest /package_filter.py /rosdistro/"$DISTRO" "$DISTRO"
+# Start the contriner with mapped a user-id, a mapped output folders, and run the package_filter.py script
+docker run -it -v "$(dirname "$DIR")"/kinetic:/rosdistro/kinetic -v "$(dirname "$DIR")"/rosdep:/rosdistro/rosdep -u $(id -u):$(id -g) rosdistro-image:latest /package_filter.py "$DISTRO"
 
-docker run --rm rosdistro-image:latest /package_filter.py / "$DISTRO" > ../"$DISTRO"/distribution.yaml
-
-echo "Completed. Please check the contents of ../$DISTRO/distribution"
+echo "Completed"
