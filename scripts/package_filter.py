@@ -50,6 +50,9 @@ def filter_distribution(alpine_packages,
     # Remove the ros-[distro] prefix
     alpine_ros_packages = [x[ros_tagline_len:] for x in alpine_ros_packages]
 
+    # Swap hyphens for undescores
+    alpine_ros_packages = list(map(lambda x: x.replace('-', '_'), alpine_ros_packages))
+
     # Previous steps kept separate for clairty
 
     # Get the ros distribution file
