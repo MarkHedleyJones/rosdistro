@@ -626,6 +626,18 @@ dnsmasq:
   fedora: [dnsmasq]
   gentoo: [net-dns/dnsmasq]
   ubuntu: [dnsmasq]
+docker-compose:
+  debian: [docker-compose]
+  fedora: [docker-compose]
+  ubuntu: [docker-compose]
+docker.io:
+  debian:
+    '*': [docker.io]
+    jessie: null
+    stretch: null
+    wheezy: null
+  fedora: [docker]
+  ubuntu: [docker.io]
 doxygen:
   alpine: [doxygen]
   arch: [doxygen]
@@ -3457,7 +3469,7 @@ liburdfdom-tools:
   slackware: [urdfdom]
   ubuntu: [liburdfdom-tools]
 libusb:
-  alpine: [libusb]
+  alpine: [libusb-compat]
   arch: [libusb-compat]
   debian: [libusb-0.1-4]
   fedora: [libusb]
@@ -3465,6 +3477,7 @@ libusb:
   macports: [libusb]
   ubuntu: [libusb-0.1-4]
 libusb-1.0:
+  alpine: [libusb]
   arch: [libusbx]
   debian: [libusb-1.0-0]
   fedora:
@@ -3474,6 +3487,7 @@ libusb-1.0:
   opensuse: [libusb-1_0-0]
   ubuntu: [libusb-1.0-0]
 libusb-1.0-dev:
+  alpine: [libusb-dev]
   arch: [libusbx]
   debian: [libusb-1.0-0-dev]
   fedora:
@@ -3484,7 +3498,6 @@ libusb-1.0-dev:
   opensuse: [libusb-1_0-devel]
   ubuntu: [libusb-1.0-0-dev]
 libusb-dev:
-  alpine: [libusb-dev]
   arch: [libusb-compat]
   debian: [libusb-dev]
   fedora: [libusb-devel]

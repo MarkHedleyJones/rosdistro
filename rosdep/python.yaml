@@ -4279,13 +4279,7 @@ python-theano:
     zesty: [python-theano]
 python-tilestache:
   debian: [tilestache]
-  fedora:
-    '21': [python-tilestache]
-    '22': [python-tilestache]
-    '23': [python-tilestache]
-    '24': [python-tilestache]
-    heisenbug: [python-tilestache]
-    "schr\xF6dinger\u2019s": [python-tilestache]
+  fedora: [python-tilestache]
   ubuntu: [tilestache]
 python-tinydb-pip:
   debian:
