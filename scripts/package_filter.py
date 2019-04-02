@@ -103,6 +103,30 @@ def filter_distribution(alpine_packages,
         f.write("---\n")
         yaml.dump(ros_distro, f, default_flow_style=False)
 
+def load_yaml(path):
+    with open(path, 'r') as f:
+        return yaml.load(f.read())
+
+
+def update_yaml(original_packages, update_packages):
+    for package_name in update_packages:
+        if package_name in original_packages.keys():
+            if 'alpine' in original_packages[package_name]:
+                if len(update_packages[package_name]['alpine']) == 0:
+                    # Remove the entry
+                    print("To '{}': removing all entries".format(package_name))
+                    del original_packages[package_name]['alpine']
+                else:
+                    print("To '{}':, updating {} to {}.".format(package_name,
+                                                                original_packages[package_name]['alpine'],
+                                                                update_packages[package_name]['alpine']))
+                    original_packages[package_name]['alpine'] = update_packages[package_name]['alpine']
+            else:
+                print("To '{}': adding {}".format(package_name,
+                                                  update_packages[package_name]['alpine']))
+
+                original_packages[package_name]['alpine'] = update_packages[package_name]['alpine']
+
 
 def filter_rosdep(alpine_packages,
                   ros_distro_name='kinetic'):
@@ -129,6 +153,10 @@ def filter_rosdep(alpine_packages,
     # Fetch rosdep yaml files
     rosdep_python_yaml = yaml.load(urllib.urlopen(rosdep_python_url).read())
     rosdep_system_yaml = yaml.load(urllib.urlopen(rosdep_system_url).read())
+
+    # Fetch hand coded lookups
+    rosdep_python_manual_packages = load_yaml("/manual_entries_python.yaml")
+    rosdep_system_manual_packages = load_yaml("/manual_entries_base.yaml")
 
     addition_count = 0
     for rosdep_python_pkg in [x for x in rosdep_python_yaml if 'alpine' not in rosdep_python_yaml[x]]:
@@ -159,6 +187,16 @@ def filter_rosdep(alpine_packages,
                         else:
                             rosdep_system_yaml[rosdep_system_pkg]['alpine'] = [rosdep_dev_pkg_name]
 
+    # Process any manual entries
+    if rosdep_system_manual_packages is not None and len(rosdep_system_manual_packages) > 0:
+        print("Making manual modifications to rosdep/base.yaml")
+        update_yaml(rosdep_system_yaml, rosdep_system_manual_packages)
+
+    if rosdep_python_manual_packages is not None and len(rosdep_python_manual_packages) > 0:
+        print("Making manual modifications to rosdep/python.yaml")
+        update_yaml(rosdep_python_yaml, rosdep_python_manual_packages)
+
+
     output_file = "/rosdistro/rosdep/base.yaml"
     with open(output_file, 'w') as f:
         yaml.dump(rosdep_system_yaml, f)
@@ -174,6 +212,6 @@ if __name__=="__main__":
         if len(alpine_packages) == 0:
             print("No alpine packages were found.")
             pritn("Please run apk update first.")
-        filter_distribution(alpine_packages, ros_distro_name=sys.argv[1])
+        # filter_distribution(alpine_packages, ros_distro_name=sys.argv[1])
         filter_rosdep(alpine_packages, ros_distro_name=sys.argv[1])
 

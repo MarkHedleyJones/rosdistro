@@ -1,0 +1,8 @@
+libusb:
+  alpine: [libusb-compat]
+libusb-1.0:
+  alpine: [libusb]
+libusb-1.0-dev:
+  alpine: [libusb-dev]
+libusb-dev:
+  alpine: []
