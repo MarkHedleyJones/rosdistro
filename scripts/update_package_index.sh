@@ -2,6 +2,14 @@
 
 set -e
 
+INTERACTIVE="0"
+if [ "$1" == "-i" ]; then
+  INTERACTIVE="1"
+fi
+if [ "$1" == "--interactive" ]; then
+  INTERACTIVE="1"
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DISTRO="kinetic"
 ALPINE_DOCKER_URL="https://raw.githubusercontent.com/at-wat/alpine-ros/master/$DISTRO-ros-core-alpine-with-custom-apk/"
