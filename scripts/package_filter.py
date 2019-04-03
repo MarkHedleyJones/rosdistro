@@ -138,8 +138,14 @@ def filter_rosdep(alpine_packages,
         'master',
         'rosdep'
     ])
-    rosdep_system_url = rosdep_url + '/base.yaml'
-    rosdep_python_url = rosdep_url + '/python.yaml'
+
+    atwat_url = 'https://' + "/".join([
+        'raw.githubusercontent.com',
+        'at-wat',
+        'rosdistro',
+        'alpine-custom-apk',
+        'rosdep'
+    ])
 
     ros_tagline = "ros-{}-".format(ros_distro_name)
     ros_tagline_len = len(ros_tagline)
@@ -151,10 +157,14 @@ def filter_rosdep(alpine_packages,
     alpine_system_packages = list(set(alpine_packages) - set(alpine_python_packages))
 
     # Fetch rosdep yaml files
-    rosdep_python_yaml = yaml.load(urllib.urlopen(rosdep_python_url).read())
-    rosdep_system_yaml = yaml.load(urllib.urlopen(rosdep_system_url).read())
+    rosdep_python_yaml = yaml.load(urllib.urlopen(rosdep_url + '/python.yaml').read())
+    rosdep_system_yaml = yaml.load(urllib.urlopen(rosdep_url + '/base.yaml').read())
 
-    # Fetch hand coded lookups
+    # Fetch alterations from atwat
+    rosdep_atwat_python_yaml = yaml.load(urllib.urlopen(atwat_url + '/python.yaml').read())
+    rosdep_atwat_system_yaml = yaml.load(urllib.urlopen(atwat_url + '/base.yaml').read())
+
+    # Fetch local hand-coded lookups
     rosdep_python_manual_packages = load_yaml("/manual_entries_python.yaml")
     rosdep_system_manual_packages = load_yaml("/manual_entries_base.yaml")
 
@@ -164,11 +174,6 @@ def filter_rosdep(alpine_packages,
         if pkg_alpine_format in alpine_python_packages:
             addition_count += 1
             rosdep_python_yaml[rosdep_python_pkg]['alpine'] = [pkg_alpine_format]
-
-    output_file = "/rosdistro/rosdep/python.yaml"
-    with open(output_file, 'w') as f:
-        yaml.dump(rosdep_python_yaml, f)
-
     print("Added {} packages to rosdep/python.yaml".format(addition_count))
 
     addition_count = 0
@@ -186,21 +191,37 @@ def filter_rosdep(alpine_packages,
                             rosdep_system_yaml[rosdep_system_pkg]['alpine'] += [rosdep_dev_pkg_name]
                         else:
                             rosdep_system_yaml[rosdep_system_pkg]['alpine'] = [rosdep_dev_pkg_name]
+    print("Added {} packages to rosdep/base.yaml".format(addition_count))
+
+    # Process atwat entries
+    print("\nApplying modifications to rosdep/base.yaml from:\n{}".format(atwat_url + '/base.yaml'))
+    for rosdep_system_pkg in [x for x in rosdep_atwat_system_yaml if 'alpine' in rosdep_atwat_system_yaml[x] and 'alpine' not in rosdep_system_yaml[x]]:
+        print("To '{}': adding {}".format(rosdep_system_pkg,
+                                          rosdep_atwat_system_yaml[rosdep_system_pkg]['alpine']))
+        rosdep_system_yaml[rosdep_system_pkg]['alpine'] = rosdep_atwat_system_yaml[rosdep_system_pkg]['alpine']
+
+    print("\nApplying modifications to rosdep/python.yaml from:\n{}".format(atwat_url + '/python.yaml'))
+    for rosdep_python_pkg in [x for x in rosdep_atwat_python_yaml if 'alpine' in rosdep_atwat_python_yaml[x] and 'alpine' not in rosdep_python_yaml[x]]:
+        print("To '{}': adding {}".format(rosdep_system_pkg,
+                                          rosdep_atwat_system_yaml[rosdep_system_pkg]['alpine']))
+        rosdep_python_yaml[rosdep_python_pkg]['alpine'] = rosdep_atwat_python_yaml[rosdep_python_pkg]['alpine']
 
     # Process any manual entries
     if rosdep_system_manual_packages is not None and len(rosdep_system_manual_packages) > 0:
-        print("Making manual modifications to rosdep/base.yaml")
+        print("\nMaking manual modifications to rosdep/base.yaml")
         update_yaml(rosdep_system_yaml, rosdep_system_manual_packages)
 
     if rosdep_python_manual_packages is not None and len(rosdep_python_manual_packages) > 0:
-        print("Making manual modifications to rosdep/python.yaml")
+        print("\nMaking manual modifications to rosdep/python.yaml")
         update_yaml(rosdep_python_yaml, rosdep_python_manual_packages)
 
+    output_file = "/rosdistro/rosdep/python.yaml"
+    with open(output_file, 'w') as f:
+        yaml.dump(rosdep_python_yaml, f)
 
     output_file = "/rosdistro/rosdep/base.yaml"
     with open(output_file, 'w') as f:
         yaml.dump(rosdep_system_yaml, f)
-    print("Added {} packages to rosdep/base.yaml".format(addition_count))
 
 
 if __name__=="__main__":
