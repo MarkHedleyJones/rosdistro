@@ -331,6 +331,7 @@ box2d-dev:
   fedora: [Box2D-devel]
   ubuntu: [libbox2d-dev]
 bullet:
+  alpine: [bullet3-dev]
   arch: [bullet]
   debian: [libbullet-dev]
   fedora: [bullet-devel]
@@ -1168,47 +1169,55 @@ gstreamer0.10-pocketsphinx:
   gentoo: [app-accessibility/pocketsphinx]
   ubuntu: [gstreamer0.10-pocketsphinx]
 gstreamer1.0:
+  alpine: [gstreamer]
   arch: [gstreamer]
   debian: [gstreamer1.0-tools, libgstreamer1.0-0, gir1.2-gstreamer-1.0]
   fedora: [gstreamer1]
   gentoo: ['media-libs/gstreamer:1.0']
   ubuntu: [gstreamer1.0-tools, libgstreamer1.0-0, gir1.2-gstreamer-1.0]
 gstreamer1.0-libav:
+  alpine: [gst-libav]
   arch: [gst-libav]
   debian: [gstreamer1.0-libav]
   fedora: [gstreamer1-libav]
   gentoo: ['media-plugins/gst-plugins-libav:1.0']
   ubuntu: [gstreamer1.0-libav]
 gstreamer1.0-plugins-bad:
+  alpine: [gst-plugins-bad]
   arch: [gst-plugins-bad]
   debian: [gstreamer1.0-plugins-bad]
   fedora: [gstreamer1-plugins-bad-free]
   gentoo: ['media-libs/gst-plugins-bad:1.0']
   ubuntu: [gstreamer1.0-plugins-bad]
 gstreamer1.0-plugins-base:
+  alpine: [gst-plugins-base]
   arch: [gst-plugins-base]
   debian: [gstreamer1.0-plugins-base, libgstreamer-plugins-base1.0-0, gir1.2-gst-plugins-base-1.0]
   fedora: [gstreamer1-plugins-base]
   gentoo: ['media-libs/gst-plugins-base:1.0']
   ubuntu: [gstreamer1.0-plugins-base, libgstreamer-plugins-base1.0-0, gir1.2-gst-plugins-base-1.0]
 gstreamer1.0-plugins-good:
+  alpine: [gst-plugins-good]
   arch: [gst-plugins-good]
   debian: [gstreamer1.0-plugins-good]
   fedora: [gstreamer1-plugins-good]
   gentoo: ['media-libs/gst-plugins-good:1.0']
   ubuntu: [gstreamer1.0-plugins-good, libgstreamer-plugins-good1.0-0]
 gstreamer1.0-plugins-ugly:
+  alpine: [gst-plugins-ugly]
   arch: [gst-plugins-ugly]
   debian: [gstreamer1.0-plugins-ugly]
   fedora: [gstreamer1-plugins-ugly]
   gentoo: ['media-libs/gst-plugins-ugly:1.0']
   ubuntu: [gstreamer1.0-plugins-ugly]
 gstreamer1.0-tools:
+  alpine: [gstreamer-tools]
   debian: [gstreamer1.0-tools]
   fedora: [gstreamer1]
   gentoo: ['media-libs/gstreamer:1.0']
   ubuntu: [gstreamer1.0-tools]
 gstreamer1.0-x:
+  alpine: [gst-plugins-base]
   arch: [gstreamer]
   debian: [gstreamer1.0-x]
   fedora: [gstreamer1-plugins-base]
@@ -1233,6 +1242,7 @@ gtk-doc-tools:
   gentoo: [dev-util/gtk-doc]
   ubuntu: [gtk-doc-tools]
 gtk2:
+  alpine: [gtk+2.0-dev]
   arch: [gtk2]
   debian: [libgtk2.0-dev]
   fedora: [gtk2-devel]
@@ -1413,6 +1423,7 @@ java:
   gentoo: [virtual/jdk]
   ubuntu: [default-jdk]
 joystick:
+  alpine: [linux-headers, linuxconsoletools]
   arch: [linuxconsole]
   debian: [joystick]
   fedora: [linuxconsoletools]
@@ -1562,6 +1573,19 @@ libbluetooth-dev:
   fedora: [bluez-libs-devel]
   gentoo: [net-wireless/bluez-libs]
   ubuntu: [libbluetooth-dev]
+libboost-program-options:
+  debian:
+    jessie: [libboost-program-options1.55.0]
+    stretch: [libboost-program-options1.62.0]
+  fedora: [boost-program-options]
+  ubuntu:
+    bionic: [libboost-program-options1.65.1]
+    trusty: [libboost-program-options1.55.0]
+    xenial: [libboost-program-options1.58.0]
+libboost-program-options-dev:
+  debian: [libboost-program-options-dev]
+  fedora: [boost-devel]
+  ubuntu: [libboost-program-options-dev]
 libboost-random:
   debian:
     jessie: [libboost-random1.55.0]
@@ -1569,6 +1593,7 @@ libboost-random:
     wheezy: [libboost-random1.49.0]
   fedora: [boost-random]
   ubuntu:
+    bionic: [libboost-random1.65.1]
     precise: [libboost-random1.46.1]
     trusty: [libboost-random1.54.0]
 libboost-random-dev:
@@ -2117,6 +2142,7 @@ libgstreamer-plugins-base0.10-dev:
   gentoo: ['media-libs/gst-plugins-base:0.10']
   ubuntu: [libgstreamer-plugins-base0.10-dev]
 libgstreamer-plugins-base1.0-dev:
+  alpine: [gst-plugins-base-dev]
   arch: [gst-plugins-base]
   debian: [libgstreamer-plugins-base1.0-dev]
   fedora: [gstreamer1-plugins-base-devel]
@@ -2139,6 +2165,7 @@ libgstreamer0.10-dev:
   gentoo: ['media-libs/gstreamer:0.10']
   ubuntu: [libgstreamer0.10-dev]
 libgstreamer1.0-dev:
+  alpine: [gstreamer-dev]
   arch: [gstreamer]
   debian: [libgstreamer1.0-dev]
   fedora: [gstreamer1-devel]
@@ -2194,6 +2221,7 @@ libirrlicht-dev:
   gentoo: [dev-games/irrlicht]
   ubuntu: [libirrlicht-dev]
 libiw-dev:
+  alpine: [wireless-tools-dev]
   debian: [libiw-dev]
   fedora: [wireless-tools-devel]
   gentoo: [net-wireless/wireless-tools]
@@ -2463,6 +2491,7 @@ libogg:
   slackware: [libogg]
   ubuntu: [libogg-dev]
 libogre-dev:
+  alpine: [ogre-dev]
   arch: [ogre-1.9]
   debian:
     buster: [libogre-1.9-dev]
@@ -2515,6 +2544,7 @@ libopencv-contrib-dev:
   gentoo: [media-libs/opencv]
   ubuntu: [libopencv-contrib-dev]
 libopencv-dev:
+  alpine: [opencv-dev]
   arch: [opencv]
   debian: [libopencv-dev]
   fedora: [opencv-devel]
@@ -2620,6 +2650,7 @@ libpcap:
   macports: [libpcap]
   ubuntu: [libpcap0.8-dev]
 libpcl-all:
+  alpine: [pcl]
   arch: [pcl]
   debian:
     buster: [libpcl-apps1.8, libpcl-common1.8, libpcl-features1.8, libpcl-filters1.8,
@@ -2670,6 +2701,7 @@ libpcl-all:
       libpcl-sample-consensus1.8, libpcl-search1.8, libpcl-segmentation1.8, libpcl-stereo1.8,
       libpcl-surface1.8, libpcl-tracking1.8, libpcl-visualization1.8]
 libpcl-all-dev:
+  alpine: [pcl-dev]
   arch: [pcl]
   debian: [libpcl-dev]
   fedora: [pcl-devel]
@@ -2915,6 +2947,7 @@ libqglviewer-qt4-dev:
     yakkety: [libqglviewer-dev-qt4]
     zesty: [libqglviewer-dev-qt4]
 libqhull:
+  alpine: [qhull-dev]
   arch: [qhull]
   debian: [libqhull-dev]
   fedora: [qhull-devel]
@@ -2986,6 +3019,7 @@ libqt5-concurrent:
   slackware: [qt5]
   ubuntu: [libqt5concurrent5]
 libqt5-core:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5core5a]
   fedora: [qt5-qtbase]
@@ -2996,6 +3030,7 @@ libqt5-core:
   slackware: [qt5]
   ubuntu: [libqt5core5a]
 libqt5-gui:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5gui5]
   fedora: [qt5-qtbase-gui]
@@ -3006,6 +3041,7 @@ libqt5-gui:
   slackware: [qt5]
   ubuntu: [libqt5gui5]
 libqt5-network:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5network5]
   fedora: [qt5-qtbase]
@@ -3013,6 +3049,7 @@ libqt5-network:
   gentoo: ['dev-qt/qtnetwork:5']
   ubuntu: [libqt5network5]
 libqt5-opengl:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5opengl5]
   fedora: [qt5-qtbase]
@@ -3023,6 +3060,7 @@ libqt5-opengl:
   slackware: [qt5]
   ubuntu: [libqt5opengl5]
 libqt5-opengl-dev:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5opengl5-dev]
   fedora: [qt5-qtbase]
@@ -3030,6 +3068,7 @@ libqt5-opengl-dev:
   slackware: [qt5]
   ubuntu: [libqt5opengl5-dev]
 libqt5-printsupport:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5printsupport5]
   fedora: [qt5-qtbase]
@@ -3037,6 +3076,7 @@ libqt5-printsupport:
   gentoo: ['dev-qt/qtprintsupport:5']
   ubuntu: [libqt5printsupport5]
 libqt5-serialport:
+  alpine: [qt5-qtserialport-dev]
   arch: [qt5-serialport]
   debian: [libqt5serialport5]
   fedora: [qt5-qtserialport]
@@ -3044,6 +3084,7 @@ libqt5-serialport:
   gentoo: ['dev-qt/qtserialport:5']
   ubuntu: [libqt5serialport5]
 libqt5-sql:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian:
     buster: [libqt5sql5]
@@ -3054,12 +3095,14 @@ libqt5-sql:
   gentoo: ['dev-qt/qtsql:5']
   ubuntu: [libqt5sql5]
 libqt5-svg-dev:
+  alpine: [qt5-qtsvg-dev]
   debian: [libqt5svg5-dev]
   fedora: [qt5-qtsvg-devel]
   freebsd: [qt5-svg]
   gentoo: ['dev-qt/qtsvg:5']
   ubuntu: [libqt5svg5-dev]
 libqt5-widgets:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [libqt5widgets5]
   fedora: [qt5-qtbase]
@@ -3070,6 +3113,7 @@ libqt5-widgets:
   slackware: [qt5]
   ubuntu: [libqt5widgets5]
 libqt5x11extras5-dev:
+  alpine: [qt5-qtx11extras-dev]
   arch: [qt5-x11extras]
   debian: [libqt5x11extras5-dev]
   fedora: [qt5-qtx11extras-devel]
@@ -3139,6 +3183,7 @@ librdkafka-dev:
   gentoo: [dev-libs/librdkafka]
   ubuntu: [librdkafka-dev]
 libreadline:
+  alpine: [readline-dev]
   arch: [readline]
   debian: [libreadline-dev]
   fedora: [readline]
@@ -3146,6 +3191,7 @@ libreadline:
   macports: [readline]
   ubuntu: [libreadline-dev]
 libreadline-dev:
+  alpine: [readline-dev]
   arch: [readline]
   debian: [libreadline-dev]
   fedora: [readline-devel]
@@ -3265,6 +3311,7 @@ libsvn-dev:
   fedora: [subversion-devel]
   ubuntu: [libsvn-dev]
 libswscale-dev:
+  alpine: [ffmpeg-dev]
   arch: [ffmpeg]
   debian: [libswscale-dev]
   fedora: [ffmpeg-devel]
@@ -3301,6 +3348,7 @@ libtheora:
       packages: [libtheora]
   ubuntu: [libtheora-dev]
 libtiff-dev:
+  alpine: [tiff-dev]
   arch: [libtiff]
   debian:
     buster: [libtiff5-dev]
@@ -3446,6 +3494,7 @@ libunwind-dev:
     saucy: [libunwind8-dev]
     trusty: [libunwind8-dev]
 liburdfdom-dev:
+  alpine: [urdfdom-dev]
   arch: [urdfdom]
   debian: [liburdfdom-dev]
   fedora: [urdfdom-devel]
@@ -3454,6 +3503,7 @@ liburdfdom-dev:
   slackware: [urdfdom]
   ubuntu: [liburdfdom-dev]
 liburdfdom-headers-dev:
+  alpine: [urdfdom_headers]
   arch: [urdfdom-headers]
   debian: [liburdfdom-headers-dev]
   fedora: [urdfdom-headers-devel]
@@ -3462,6 +3512,7 @@ liburdfdom-headers-dev:
   slackware: [urdfdom_headers]
   ubuntu: [liburdfdom-headers-dev]
 liburdfdom-tools:
+  alpine: [urdfdom]
   arch: [urdfdom]
   debian: [liburdfdom-tools]
   fedora: [urdfdom]
@@ -3498,6 +3549,7 @@ libusb-1.0-dev:
   opensuse: [libusb-1_0-devel]
   ubuntu: [libusb-1.0-0-dev]
 libusb-dev:
+  alpine: [libusb-dev]
   arch: [libusb-compat]
   debian: [libusb-dev]
   fedora: [libusb-devel]
@@ -3524,6 +3576,7 @@ libuv-dev:
     yakkety: [libuv0.10-dev]
     zesty: [libuv0.10-dev]
 libv4l-dev:
+  alpine: [v4l-utils-dev]
   arch: [v4l-utils]
   debian: [libv4l-dev]
   fedora: [libv4l-devel]
@@ -3555,6 +3608,7 @@ libvpx-dev:
   gentoo: [media-libs/libvpx]
   ubuntu: [libvpx-dev]
 libvtk:
+  alpine: [vtk7-dev]
   arch: [vtk]
   debian:
     buster: [libvtk6-dev]
@@ -3605,6 +3659,7 @@ libvtk-java:
     wily: [libvtk-java]
     xenial: [libvtk-java]
 libvtk-qt:
+  alpine: [vtk7-dev]
   arch: [vtk]
   debian:
     buster: [libvtk6-qt-dev]
@@ -4292,6 +4347,7 @@ opende:
   gentoo: [dev-games/ode]
   ubuntu: [libode-dev]
 opengl:
+  alpine: [mesa-dev]
   arch: [mesa]
   debian: [libgl1-mesa-dev, libglu1-mesa-dev]
   fedora: [mesa-libGL-devel, mesa-libGLU-devel]
@@ -4613,6 +4669,7 @@ qt4-qmake:
   rhel: [qt-devel]
   ubuntu: [qt4-qmake]
 qt5-qmake:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [qt5-qmake]
   fedora: [qt5-qtbase-devel]
@@ -4623,6 +4680,7 @@ qt5-qmake:
   slackware: [qt5]
   ubuntu: [qt5-qmake]
 qtbase5-dev:
+  alpine: [qt5-qtbase-dev]
   arch: [qt5-base]
   debian: [qtbase5-dev]
   fedora: [qt5-qtbase-devel]
@@ -4776,6 +4834,7 @@ sdl-gfx:
   gentoo: [media-libs/sdl-gfx]
   ubuntu: [libsdl-gfx1.2-dev]
 sdl-image:
+  alpine: [sdl_image-dev]
   arch: [sdl_image]
   debian: [libsdl-image1.2-dev]
   fedora: [SDL_image-devel]
@@ -4785,6 +4844,7 @@ sdl-image:
   opensuse: [SDL_image]
   ubuntu: [libsdl-image1.2-dev]
 sdl-mixer:
+  alpine: [sdl_mixer-dev]
   arch: [sdl_mixer]
   debian: [libsdl-mixer1.2-dev]
   fedora: [SDL_mixer-devel]
@@ -4804,6 +4864,7 @@ sdl2:
   gentoo: [media-libs/libsdl2]
   ubuntu: [libsdl2-dev]
 sdl2-ttf:
+  alpine: [sdl2_ttf-dev]
   debian: [libsdl2-ttf-dev]
   fedora: [SDL2_ttf-devel]
   gentoo: [media-libs/sdl2-ttf]
@@ -5293,6 +5354,7 @@ usbutils:
   macports: [usbutils]
   ubuntu: [usbutils]
 uuid:
+  alpine: [util-linux-dev]
   arch: [util-linux]
   debian: [uuid-dev]
   fedora: [libuuid-devel]
