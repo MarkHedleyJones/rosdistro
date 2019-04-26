@@ -101,6 +101,7 @@ asio:
   debian: [libasio-dev]
   fedora: [asio-devel]
   gentoo: [dev-cpp/asio]
+  rhel: [asio-devel]
   ubuntu: [libasio-dev]
 assimp:
   alpine: [assimp]
@@ -620,6 +621,7 @@ dkms:
   fedora: [dkms]
   gentoo: [sys-kernel/dkms]
   opensuse: [dkms]
+  rhel: [dkms]
   ubuntu: [dkms]
 dnsmasq:
   alpine: [dnsmasq]
@@ -829,6 +831,13 @@ fluid:
   macports: [fltk]
   opensuse: [fltk-devel]
   ubuntu: [fluid]
+fping:
+  alpine: [fping]
+  arch: [fping]
+  debian: [fping]
+  fedora: [fping]
+  gentoo: [net-analyzer/fping]
+  ubuntu: [fping]
 freeimage:
   arch: [freeimage]
   debian: [libfreeimage-dev]
@@ -1031,6 +1040,7 @@ git:
   gentoo: [dev-vcs/git]
   macports: [git-core]
   opensuse: [git-core]
+  rhel: [git]
   ubuntu: [git]
 gitg:
   debian: [gitg]
@@ -1059,6 +1069,9 @@ gnuplot:
   fedora: [gnuplot]
   gentoo: [sci-visualization/gnuplot]
   ubuntu: [gnuplot]
+gnuplot-x11:
+  debian: [gnuplot-x11]
+  ubuntu: [gnuplot-x11]
 golang-go:
   debian: [golang-go]
   gentoo: [dev-lang/go]
@@ -1074,6 +1087,13 @@ google-mock:
   opensuse: [gmock-devel]
   rhel: [gmock-devel]
   ubuntu: [google-mock]
+gperf:
+  alpine: [gperf]
+  debian: [gperf]
+  fedora: [gperf]
+  gentoo: [dev-util/gperf]
+  rhel: [gperf]
+  ubuntu: [gperf]
 gperftools:
   debian: [google-perftools, libgoogle-perftools-dev]
   fedora: [gperftools, gperftools-devel]
@@ -1911,6 +1931,7 @@ libftdipp-dev:
   fedora: [libftdi-c++-devel]
   gentoo: ['dev-embedded/libftdi[cxx]']
   ubuntu:
+    bionic: [libftdipp1-dev]
     precise: [libftdipp-dev]
     saucy: [libftdipp-dev]
     trusty: [libftdipp-dev]
@@ -2017,6 +2038,7 @@ libglfw3-dev:
   debian: [libglfw3-dev]
   fedora: [glfw-devel]
   gentoo: [media-libs/glfw]
+  rhel: [glfw-devel]
   ubuntu:
     '*': [libglfw3-dev]
     trusty: null
@@ -2067,6 +2089,7 @@ libgpgme-dev:
     wheezy: [libgpgme11-dev]
   fedora: [gpgme-devel]
   gentoo: [app-crypt/gpgme]
+  rhel: [gpgme-devel]
   ubuntu:
     artful: [libgpgme-dev]
     bionic: [libgpgme-dev]
@@ -2428,6 +2451,13 @@ libmysqlcppconn-dev:
   gentoo: [dev-db/mysql-connector-c++]
   opensuse: [libmysqlcppconn-devel]
   ubuntu: [libmysqlcppconn-dev]
+libncurses:
+  arch: [ncurses]
+  debian: [libncurses5]
+  fedora: [ncurses]
+  gentoo: [sys-libs/ncurses]
+  rhel: [ncurses]
+  ubuntu: [libncurses5]
 libncurses-dev:
   arch: [ncurses]
   debian: [libncurses5-dev]
@@ -2488,6 +2518,7 @@ libogg:
   gentoo: [media-libs/libogg]
   macports: [libogg]
   opensuse: [libogg-devel]
+  rhel: [libogg-devel]
   slackware: [libogg]
   ubuntu: [libogg-dev]
 libogre-dev:
@@ -2669,6 +2700,7 @@ libpcl-all:
   gentoo: [sci-libs/pcl]
   macports: [libpcl]
   opensuse: [pcl]
+  rhel: [pcl, pcl-tools]
   slackware: [pcl]
   ubuntu:
     artful: [libpcl-apps1.8, libpcl-common1.8, libpcl-features1.8, libpcl-filters1.8,
@@ -2709,6 +2741,7 @@ libpcl-all-dev:
   gentoo: [sci-libs/pcl]
   macports: [libpcl]
   opensuse: [pcl]
+  rhel: [pcl-devel]
   slackware: [pcl]
   ubuntu:
     artful: [libpcl-dev]
@@ -3250,6 +3283,7 @@ libsqlite3-dev:
   debian: [libsqlite3-dev]
   fedora: [libsq3-devel]
   gentoo: ['dev-db/sqlite:3']
+  rhel: [libsq3-devel]
   ubuntu: [libsqlite3-dev]
 libsrtp0-dev:
   debian: [libsrtp0-dev]
@@ -3282,6 +3316,7 @@ libssl-dev:
   debian: [libssl-dev]
   fedora: [openssl-devel]
   gentoo: [dev-libs/openssl]
+  rhel: [openssl-devel]
   ubuntu: [libssl-dev]
 libstdc++5:
   arch: [libstdc++5]
@@ -3343,6 +3378,7 @@ libtheora:
   gentoo: [media-libs/libtheora]
   macports: [libtheora]
   opensuse: [libtheora-devel]
+  rhel: [libtheora-devel]
   slackware:
     slackpkg:
       packages: [libtheora]
@@ -3547,9 +3583,9 @@ libusb-1.0-dev:
   gentoo: ['virtual/libusb:1']
   macports: [libusb]
   opensuse: [libusb-1_0-devel]
+  rhel: [libusbx-devel]
   ubuntu: [libusb-1.0-0-dev]
 libusb-dev:
-  alpine: [libusb-dev]
   arch: [libusb-compat]
   debian: [libusb-dev]
   fedora: [libusb-devel]
@@ -3896,6 +3932,7 @@ linux-headers-generic:
     wheezy: [linux-headers-3.2.0-4-all]
   fedora: [kernel-headers, kernel-devel]
   gentoo: [sys-kernel/linux-headers]
+  rhel: [kernel-headers, kernel-devel]
   ubuntu: [linux-headers-generic]
 linux-kernel-headers:
   arch: [linux-api-headers]
@@ -4561,6 +4598,12 @@ postgresql-postgis:
     bionic: [postgresql-10-postgis-2.4, postgresql-contrib, postgresql-server-dev-all]
     trusty: [postgresql-9.3-postgis-2.1, postgresql-contrib, postgresql-server-dev-all]
     xenial: [postgresql-9.5-postgis-2.2, postgresql-contrib, postgresql-server-dev-all]
+potrace:
+  alpine: [potrace]
+  debian: [potrace]
+  fedora: [potrace]
+  rhel: [potrace]
+  ubuntu: [potrace]
 powertop:
   alpine: [powertop]
   arch: [powertop]
@@ -5294,6 +5337,7 @@ udev:
   debian: [udev]
   fedora: [systemd-udev]
   gentoo: [sys-fs/udev]
+  rhel: [systemd]
   ubuntu: [udev]
 udhcpc:
   arch: [udhcp]
