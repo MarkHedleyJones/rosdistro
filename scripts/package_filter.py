@@ -108,7 +108,7 @@ def load_yaml(path):
         return yaml.load(f.read())
 
 
-def update_yaml(original_packages, update_packages):
+def update_yaml(original_packages, update_packages, force=False):
     for package_name in update_packages:
         if package_name in original_packages.keys():
             if 'alpine' in original_packages[package_name]:
@@ -126,7 +126,10 @@ def update_yaml(original_packages, update_packages):
                                                   update_packages[package_name]['alpine']))
 
                 original_packages[package_name]['alpine'] = update_packages[package_name]['alpine']
-
+        elif force:
+            original_packages[package_name] = {'alpine': update_packages[package_name]['alpine']}
+            print("To '{}': creating {}".format(package_name,
+                                                update_packages[package_name]['alpine']))
 
 def filter_rosdep(alpine_packages,
                   ros_distro_name='kinetic'):
@@ -209,11 +212,11 @@ def filter_rosdep(alpine_packages,
     # Process any manual entries
     if rosdep_system_manual_packages is not None and len(rosdep_system_manual_packages) > 0:
         print("\nMaking manual modifications to rosdep/base.yaml")
-        update_yaml(rosdep_system_yaml, rosdep_system_manual_packages)
+        update_yaml(rosdep_system_yaml, rosdep_system_manual_packages, force=True)
 
     if rosdep_python_manual_packages is not None and len(rosdep_python_manual_packages) > 0:
         print("\nMaking manual modifications to rosdep/python.yaml")
-        update_yaml(rosdep_python_yaml, rosdep_python_manual_packages)
+        update_yaml(rosdep_python_yaml, rosdep_python_manual_packages, force=True)
 
     output_file = "/rosdistro/rosdep/python.yaml"
     with open(output_file, 'w') as f:
